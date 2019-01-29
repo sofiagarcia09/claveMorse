@@ -1,0 +1,164 @@
+package numerosromanos;
+
+import javax.swing.JOptionPane;
+
+public class NumerosRomanos {
+
+    public static String nr = "";
+    public static int numero;
+
+    public static void main(String[] args) {
+        int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un numero entre 1 y 1000: "));
+        if (num >= 1 && num <= 1000) {
+            String cadena = "";
+            String NRF = "";
+            cadena = cadena + num;
+            String[] v = cadena.split("");
+            switch (v.length) {
+                case 4:
+                    JOptionPane.showMessageDialog(null, "EL NUMERO EN ROMANO ES: M");
+                    break;
+                case 3:
+                    NRF = convertirC(v[0]);
+                    nr="";
+                    NRF = NRF +convertirD(v[1]);
+                    nr="";
+                    NRF = NRF + convertirU(v[2]);
+                    JOptionPane.showMessageDialog(null, "El numero " + num + " en romano es: " + NRF);
+                    break;
+                case 2:
+                    NRF = convertirD(v[0]);
+                    nr="";
+                    NRF = NRF + convertirU(v[1]);
+                    JOptionPane.showMessageDialog(null, "El numero " + num + " en romano es: " + NRF);
+
+                    break;
+                case 1:
+                    NRF = convertirU(v[0]);
+                    JOptionPane.showMessageDialog(null, "El numero " + num + " en romano es: " + NRF);
+                    break;
+                default:
+                    break;
+            }
+
+        } else {
+            System.err.println("EL numero ingresado no esta dentro del rango");
+        }
+
+    }
+
+    public static String convertirC(String v) {
+        numero = Integer.parseInt(v);
+        switch (numero) {
+            case 0:
+                nr += "";
+                break;
+            case 1:
+                nr += "C";
+                break;
+            case 2:
+                nr += "CC";
+                break;
+            case 3:
+                nr += "CCC";
+                break;
+            case 4:
+                nr += "CD";
+                break;
+            case 5:
+                nr += "D";
+                break;
+            case 6:
+                nr += "DC";
+                break;
+            case 7:
+                nr += "DCC";
+                break;
+            case 8:
+                nr += "DCCC";
+                break;
+            case 9:
+                nr += "CM";
+                break;
+        }
+        return nr;        
+
+    }
+
+    public static String convertirD(String v) {
+        numero = Integer.parseInt(v);
+        switch (numero) {
+            case 0:
+                nr += "";
+                break;
+            case 1:
+                nr += "X";
+                break;
+            case 2:
+                nr += "XX";
+                break;
+            case 3:
+                nr += "XXX";
+                break;
+            case 4:
+                nr += "XL";
+                break;
+            case 5:
+                nr += "L";
+                break;
+            case 6:
+                nr += "LX";
+                break;
+            case 7:
+                nr += "LXX";
+                break;
+            case 8:
+                nr += "LXXX";
+                break;
+            case 9:
+                nr += "XC";
+                break;
+        }
+        return nr;
+
+    }
+
+    public static String convertirU(String v) {
+        numero = Integer.parseInt(v);
+        switch (numero) {
+            case 0:
+                   nr +="";
+                   break;
+            case 1:
+                nr += "I";
+                break;
+            case 2:
+                nr += "II";
+                break;
+            case 3:
+                nr += "III";
+                break;
+            case 4:
+                nr += "IV";
+                break;
+            case 5:
+                nr += "V";
+                break;
+            case 6:
+                nr += "VI";
+                break;
+            case 7:
+                nr += "VII";
+                break;
+            case 8:
+                nr += "VIII";
+                break;
+            case 9:
+                nr += "IX";
+                break;
+        }
+        return nr;
+
+    }
+
+}
