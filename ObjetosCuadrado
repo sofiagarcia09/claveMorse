@@ -1,0 +1,44 @@
+package ejerciciosobjetos;
+
+import javax.swing.JOptionPane;
+
+public class Cuadrado {
+
+    public static float res;
+
+    public void menu(float l) {
+        int oc;
+        do {
+            oc = Integer.parseInt(JOptionPane.showInputDialog("*************** MENÚ FIGURA CUADRADO *************** \n 1.-Calcular Area \n 2.-Calcular Perimetro \n 3.-Regresar al menu anterior"));
+
+            switch (oc) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "El area del cuadrado es: " + calcularArea(l, 2)+"m²");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El perimetro del cuadrado es: " + calcularPerimetro(l,2)+" m");
+                    break;
+            }
+        } while (oc != 3);
+
+    }
+
+    public float calcularArea(float lado, int nl) {
+        if (nl == 2) {
+            return res = (float) Math.pow(lado, 2);
+        } else {
+            return res = (float) Math.pow(lado, 3);
+        }
+
+    }
+
+    public float calcularPerimetro(float lado, int nl) {
+        if (nl == 2) {
+            return res = lado * 4;
+        } else {
+            return res = lado * 12;
+        }
+
+    }
+
+}
