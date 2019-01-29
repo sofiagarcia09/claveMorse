@@ -1,0 +1,49 @@
+package ejerciciosobjetos;
+
+import javax.swing.JOptionPane;
+
+public class Cubo extends Cuadrado {
+    public static float lado;
+    
+    public static float medida(){
+        
+        do {
+            lado = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la medida del arista:"));
+            if(lado==0){
+                JOptionPane.showMessageDialog(null, "La medida del arista del cuadrado debe ser mayor a 0");
+            }else{
+                 JOptionPane.showMessageDialog(null, "La medida del arista del cuadrado es: " + lado +" m");
+            }
+           
+        } while (lado == 0);
+        return lado;
+    }
+
+    public static void main(String[] args) {
+        Cuadrado cuadrado = new Cuadrado();
+
+        int mcubo = 0;
+        
+        medida();
+
+
+        do {
+            mcubo = Integer.parseInt(JOptionPane.showInputDialog("*************** MENÚ FIGURA CUBO *************** \n 1.-Calcular Volumen del cubo \n 2.-Calcular Perimetro del cubo \n 3.- Ir a menu de Cuadrado \n 4.-Ingresar una nueva medida del arista \n 5.- Salir"));
+
+            switch (mcubo) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "El volumen del cubo es: " + cuadrado.calcularArea(lado, 3)+" m³");
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "El perimetro del cubo es: " + cuadrado.calcularPerimetro(lado, 3)+" m");
+                    break;
+                case 3: 
+                    cuadrado.menu(lado);
+                    break;
+                case 4:
+                    medida();
+                    break;                    
+            }
+        } while (mcubo != 5);
+    }
+}
