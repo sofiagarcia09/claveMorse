@@ -1,0 +1,289 @@
+package clavemorse;
+
+import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
+
+public class ClaveMorse {
+
+    static String x = "";//aqui se van a guardar los resultados
+
+    public static void main(String[] args) {
+
+        int op;
+        do {
+            op = Integer.parseInt(JOptionPane.showInputDialog(" 1.-Texto a Clave morse\n 2.-Clave morse a Texto \n 3.-Salir."));
+            String a = "", pm = "";//se recibe el texto
+            char[] b; //aqui se recibe la clave morse
+            //String pm = "";
+            int espacios = 0;
+            switch (op) {
+                case 1://CONVERTIR DE TEXTO A CLAVE MORSE
+                    a = toUpperCase(JOptionPane.showInputDialog("Ingrese la frase: "));
+                    String[] v = a.split("");
+                    for (int i = 0; i < v.length; i++) {
+                        x = x + morse(v[i]);
+                    }
+                    JOptionPane.showMessageDialog(null, x);
+                    //System.out.println(x);
+                    x = "";
+                    break;
+                case 2://CONVERTIR DE CLAVE MORSE A TEXTO
+                    b = ((JOptionPane.showInputDialog("Ingrese la clave morse: ")+' ').toCharArray());
+                    
+                    for (int i = 0; i < b.length; i++) {//se recorrera el vector de caracteres
+                        if (b[i] != ' ') {//si el caracter del vector no es un espacio...
+                            pm += b[i];
+                            espacios = 0;
+                        } else { //si el caracter del vector es un espacio..
+                            espacios = espacios + 1;
+                            if (espacios == 3) {
+                                x += " ";
+                                espacios = 0;
+                            }
+                            String pmc = pm;
+                            texto(pmc);
+                            pm = "";
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, x);
+                    x = "";
+
+            }
+
+        } while (op != 3);
+
+    }
+
+    public static String morse(String v) {
+        switch (v) {
+            case "A":
+                v = v.replace("A", ".- ");
+                break;
+            case "B":
+                v = v.replace("B", "-... ");
+                break;
+            case "C":
+                v = v.replace("C", "-.-. ");
+                break;
+            case "D":
+                v = v.replace("D", "-.. ");
+                break;
+            case "E":
+                v = v.replace("E", ". ");
+                break;
+            case "F":
+                v = v.replace("F", "..-. ");
+                break;
+            case "G":
+                v = v.replace("G", "--. ");
+                break;
+            case "H":
+                v = v.replace("H", ".... ");
+                break;
+            case "I":
+                v = v.replace("I", ".. ");
+                break;
+            case "J":
+                v = v.replace("J", ".--- ");
+                break;
+            case "K":
+                v = v.replace("K", "-.- ");
+                break;
+            case "L":
+                v = v.replace("L", ".-.. ");
+                break;
+
+            case "M":
+                v = v.replace("M", "-- ");
+                break;
+            case "N":
+                v = v.replace("N", "-. ");
+                break;
+            case "O":
+                v = v.replace("O", "--- ");
+                break;
+            case "P":
+                v = v.replace("P", ".--. ");
+                break;
+            case "Q":
+                v = v.replace("Q", "--.-");
+                break;
+            case "R":
+                v = v.replace("R", ".-. ");
+                break;
+            case "S":
+                v = v.replace("S", "... ");
+                break;
+            case "T":
+                v = v.replace("T", "- ");
+                break;
+            case "U":
+                v = v.replace("U", "..- ");
+                break;
+            case "V":
+                v = v.replace("V", "...- ");
+                break;
+            case "W":
+                v = v.replace("W", ".-- ");
+                break;
+            case "X":
+                v = v.replace("X", "-..- ");
+                break;
+            case "Y":
+                v = v.replace("Y", "-.-- ");
+                break;
+            case "Z":
+                v = v.replace("Z", "--.. ");
+                break;
+            case "0":
+                v = v.replace("0", "----- ");
+                break;
+            case "1":
+                v = v.replace("1", ".---- ");
+                break;
+            case "2":
+                v = v.replace("2", "..--- ");
+                break;
+            case "3":
+                v = v.replace("3", "...-- ");
+                break;
+            case "4":
+                v = v.replace("4", "....- ");
+                break;
+            case "5":
+                v = v.replace("5", "..... ");
+                break;
+            case "6":
+                v = v.replace("6", "-.... ");
+                break;
+            case "7":
+                v = v.replace("7", "--... ");
+                break;
+            case "8":
+                v = v.replace("8", "---.. ");
+                break;
+            case "9":
+                v = v.replace("9", "----. ");
+                break;
+            case " ":
+                v = v.replace(" ", "   ");
+                break;
+        }
+        return v;
+    }
+
+    public static String texto(String pmc) {
+
+        switch (pmc) {
+            case ".-":
+                x += ("A");
+                break;
+            case "-...":
+                x += ("B");
+                break;
+            case "-.-.":
+                x += ("C");
+                break;
+            case "-..":
+                x += ("D");
+                break;
+            case ".":
+                x += ("E");
+                break;
+            case "..-.":
+                x += ("F");
+                break;
+            case "--.":
+                x += ("G");
+                break;
+            case "....":
+                x += ("H");
+                break;
+            case "..":
+                x += ("I");
+                break;
+            case ".---":
+                x += ("J");
+                break;
+            case "-.-":
+                x += ("K");
+                break;
+            case ".-..":
+                x += ("L");
+                break;
+            case "--":
+                x += ("M");
+                break;
+            case "-.":
+                x += ("N");
+                break;
+            case "---":
+                x += ("O");
+                break;
+            case ".--.":
+                x += ("P");
+                break;
+            case "--.-":
+                x += ("Q");
+                break;
+            case ".-.":
+                x += ("R");
+                break;
+            case "...":
+                x += ("S");
+                break;
+            case "-":
+                x += ("T");
+                break;
+            case "..-":
+                x += ("U");
+                break;
+            case "...-":
+                x += ("V");
+                break;
+            case ".--":
+                x += ("W");
+                break;
+            case "-..-":
+                x += ("X");
+                break;
+            case "-.--":
+                x += ("Y");
+                break;
+            case "--..":
+                x += ("Z");
+                break;
+            case "-----":
+                x += ("0");
+                break;
+            case ".----":
+                x += ("1");
+                break;
+            case "..---":
+                x += ("2");
+                break;
+            case "...--":
+                x += ("3");
+                break;
+            case "....-":
+                x += ("4");
+                break;
+            case ".....":
+                x += ("5");
+                break;
+            case "-....":
+                x += ("6");
+                break;
+            case "--...":
+                x += ("7");
+                break;
+            case "---..":
+                x += ("8");
+                break;
+            case "----.":
+                x += ("9");
+                break;
+        }
+        return x;
+    }
+}
